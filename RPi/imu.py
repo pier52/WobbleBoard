@@ -60,9 +60,9 @@ pitchrate = 0.0
 yawrate = 0.0
 
 # magnetic deviation
-f = open('mag', 'r')
-magnetic_deviation = float(f.readline())
-f.close()
+#f = open('mag', 'r')
+#magnetic_deviation = float(f.readline())
+#f.close()
 
 # dampening variables
 t_one = 0
@@ -73,6 +73,18 @@ heading_cos_total = 0.0
 heading_sin_total = 0.0
 heading_cos_run = [0] * 30
 heading_sin_run = [0] * 30
+
+
+while True:
+  if (print_t - time.time()) > 5.0:
+    if imu.IMURead():
+      data = imu.getIMUData()
+      fusionPose = data["fusionPose"]
+      Gyro = data["gyro"]
+    else:
+      print("Error")
+  print_t = time.time()
+
 
 while True:
 
