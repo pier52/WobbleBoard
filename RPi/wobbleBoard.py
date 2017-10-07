@@ -3,6 +3,7 @@ import imu
 import time
 import signal
 import sys
+import WebStreaming
 
 class WobbleBoard:
 	def __init__(self):
@@ -11,14 +12,30 @@ class WobbleBoard:
 		self.logging = False
 		signal.signal(signal.SIGINT, self.SIGINT)
 		self.is_running = False
+		self.web_streamer = WebStreaming.WebStreaming()
 
 	def run(self,frequency):
 		self.is_running = True
 		self.IMU.start()
+		try:
+			print("Waiting for connection")
+			self.web_streamer.initSocket()
+			print("Got connection")
+			self.web_streamer.check()
+			print("Got message")
+			self.web_streamer.sendHello()
+			print "Sent hello"
+		except:
+			print  "Error"
+			self.SIGINT(0,0)
+			return
+		self.SIGINT(0,0)
+		return
 		time.sleep(1)
 		while self.is_running:
 			time.sleep(1.0/frequency)
 			print self.IMU.angles
+			self.web_streamer.sendAngles(1,self.IMU.angles)
 			if(self.logging):
 				self.data_logger.logAngles(self.IMU.angles)
 
@@ -41,3 +58,4 @@ class WobbleBoard:
 			self.is_running = False
 			self.disableLogging()
 			self.IMU.stop()
+			self.web_streamer.closeAll()

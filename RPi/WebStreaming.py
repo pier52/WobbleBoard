@@ -1,4 +1,12 @@
-
+import socket
+import subprocess
+import signal
+import json
+import sys
+import fcntl
+import struct
+from threading import Timer
+import threading
 
 class WebStreaming:
     def __init__(self):
@@ -20,7 +28,7 @@ class WebStreaming:
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.s.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 60000000)
-        self.s.setblocking(False) #Make sure socket is not blocking
+        #self.s.setblocking(False) #Make sure socket is not blocking
         self.s.bind((self.TCP_IP, self.TCP_PORT))
         self.s.listen(1)
         self.conn, self.addr = self.s.accept()
@@ -32,6 +40,9 @@ class WebStreaming:
         self.conn.close()
         self.s.shutdown(socket.SHUT_RDWR)
         self.s.close()
+
+    def sendHello(self):
+	self.conn.send("Hello")
 
     def sendAngles(self,time,angles):
     	self.conn.send(str(time)+ "," + str(angles["roll"]) + "," + str(angles["pitch"]) + "," + str(angles["yaw"]))
@@ -52,7 +63,7 @@ class WebStreaming:
 
     def check(self):
         try:
-            data = self.conn.recv(self.BUFFER_SIZE)
+            print(self.conn.recv(self.BUFFER_SIZE))
             if not data:
                 return True
         except Exception:
