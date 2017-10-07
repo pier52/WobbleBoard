@@ -54,13 +54,4 @@ class MPU9250:
         time.sleep(self.poll_interval*1.0/1000.0)
 
 
-imu = MPU9250()
-imu.start()
-
-for x in range(0,10):
-  time.sleep(1)
-  print imu.angles
-
-imu.stop()
-
 
