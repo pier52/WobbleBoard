@@ -1,7 +1,7 @@
 import wobbleBoard
 
 def main():
-	board = wobbleBoard.wobbleBoard()
+	board = wobbleBoard.WobbleBoard()
 	board.enableLogging("log.csv")
 	board.run(10)
 	

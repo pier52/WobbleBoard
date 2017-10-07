@@ -14,28 +14,29 @@ class WobbleBoard:
 
 	def run(self,frequency):
 		self.is_running = True
-		imu_.start()
-			while self.is_running:
-				time.sleep(1.0/frequency)
-
-				if(self.logging):
-					self.dataLogger.logAngles(self.IMU.angles)
+		self.IMU.start()
+		time.sleep(1)
+		while self.is_running:
+			time.sleep(1.0/frequency)
+			print self.IMU.angles
+			if(self.logging):
+				self.data_logger.logAngles(self.IMU.angles)
 
 	def enableLogging(self, path):
 		if(not(self.logging)):
-			data_logger.openLog(path)
+			self.data_logger.openLog(path)
 			self.logging = True
 
 	def disableLogging(self):
 		if(self.logging):
 			self.logging = False
-			data_logger.closeLog()
+			self.data_logger.closeLog()
 
 	def restartLogging(self,path):
 		self.disableLogging()
 		self.enableLogging(path)
 
-	def SIGINT(self):
+	def SIGINT(self,signal, frame):
 		if(self.is_running):
 			self.is_running = False
 			self.disableLogging()
