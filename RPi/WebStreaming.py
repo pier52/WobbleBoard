@@ -144,14 +144,13 @@ class WebStreaming:
                     del data_list[index-num_deleted]
                     num_deleted += 1
 
-            for stuff in data_list:
-                print "received data:", stuff
+            #for stuff in data_list:
+                #print "received data:", stuff
                 #self.handle(stuff)
 
         if self.__to_send:
             for msg in self.__to_send:
                 self.conn.send(msg)
-		print "Sending stuff"
             self.__to_send = []
 
         return True
