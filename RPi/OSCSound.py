@@ -18,3 +18,10 @@ class Sound:
 		oscmsg.append(data)
 		self.client.send(oscmsg)
 
+	def sendAngles(self,angles):
+		oscmsg = OSC.OSCMessage()
+		oscmsg.setAddress(self.address)
+		oscmsg.append(angles['roll'])
+		oscmsg.append(angles['pitch'])
+		oscmsg.append(angles['yaw'])
+		self.client.send(oscmsg)		

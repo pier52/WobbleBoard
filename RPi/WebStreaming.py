@@ -5,8 +5,6 @@ import signal
 import sys
 import fcntl
 import struct
-import SteeringControl
-import SampleSender
 import select
 
 class WebStreaming:
@@ -73,6 +71,9 @@ class WebStreaming:
 
     def send(self,string):
         self.__to_send.append(string)
+
+    def sendAngles(self,time,angles):
+        self.send("*i*"  + str(int(angles['roll'])) + "|" + str(int(angles['pitch'])) + "|" + str(int(angles['yaw'])) + "\r\n")
 
     def handle(self, data):
         tag = data[1]
@@ -150,6 +151,7 @@ class WebStreaming:
         if self.__to_send:
             for msg in self.__to_send:
                 self.conn.send(msg)
+		print "Sending stuff"
             self.__to_send = []
 
         return True

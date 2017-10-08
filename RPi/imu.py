@@ -13,7 +13,8 @@ class MPU9250:
   def __init__(self):
     self.run = False
     self.imu_thread =  None
-    self.angles = 0
+    self.angles = self.angles = {'roll': 0, 'pitch' : 0, 'yaw' : 0}
+
 
   def stop(self):
     if(self.run):
@@ -50,8 +51,24 @@ class MPU9250:
         data = self.imu.getIMUData()
         fusionPose = data["fusionPose"]
         #print("r: %f p: %f y: %f" % (math.degrees(fusionPose[0]),math.degrees(fusionPose[1]), math.degrees(fusionPose[2])))
-        self.angles = {'roll': math.degrees(fusionPose[0]), 'pitch' : math.degrees(fusionPose[1]), 'yaw' : math.degrees(fusionPose[2])}
-        time.sleep(self.poll_interval*1.0/1000.0)
+        roll = math.degrees(fusionPose[0])
+	pitch = math.degrees(fusionPose[1])
+	yaw = math.degrees(fusionPose[2])
+
+	if roll < 0:
+		roll += 360
+
+	if pitch < 0:
+		pitch += 360
+
+	if yaw < 0:
+		yaw +=360
+
+	self.angles['roll'] = roll
+        self.angles['pitch'] = pitch
+        self.angles['yaw'] = yaw
+
+	time.sleep(self.poll_interval*1.0/1000.0)
 
 
 
