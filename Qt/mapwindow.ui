@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MapWindow</class>
+ <widget class="QMainWindow" name="MapWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Map</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="PositionWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>19</x>
+      <y>19</y>
+      <width>761</width>
+      <height>431</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="to_store_lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>500</y>
+      <width>113</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>10</string>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="plainTextEdit">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>450</y>
+      <width>131</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="0">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="0">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>239</red>
+          <green>235</green>
+          <blue>231</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="plainText">
+     <string>X:
+Y:
+Vehicle orientation:
+Camera orientation:
+Uncertainty:
+Time:</string>
+    </property>
+    <property name="textInteractionFlags">
+     <set>Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+    </property>
+    <property name="backgroundVisible">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="pointInfoEdit">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>450</y>
+      <width>231</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="0">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="0">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>239</red>
+          <green>235</green>
+          <blue>231</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="track_checkBox">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>450</y>
+      <width>111</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Auto Track</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>480</y>
+      <width>251</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="palette">
+     <palette>
+      <active>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="0">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </active>
+      <inactive>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="0">
+          <red>255</red>
+          <green>255</green>
+          <blue>255</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </inactive>
+      <disabled>
+       <colorrole role="Base">
+        <brush brushstyle="SolidPattern">
+         <color alpha="255">
+          <red>239</red>
+          <green>235</green>
+          <blue>231</blue>
+         </color>
+        </brush>
+       </colorrole>
+      </disabled>
+     </palette>
+    </property>
+    <property name="text">
+     <string>Number of samples of path to store:</string>
+    </property>
+    <property name="frame">
+     <bool>false</bool>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="store_apply_Button">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>500</y>
+      <width>80</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Apply</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="clear_Button">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>530</y>
+      <width>80</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Clear path</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="centerButton">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>530</y>
+      <width>80</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Center</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_Clear">
+    <property name="title">
+     <string>&amp;Options</string>
+    </property>
+    <addaction name="action_Clear"/>
+   </widget>
+   <addaction name="menu_Clear"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_Clear">
+   <property name="text">
+    <string>&amp;Save pdf</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PositionWidget</class>
+   <extends>QWidget</extends>
+   <header>positionwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

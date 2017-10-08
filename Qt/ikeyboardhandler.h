@@ -27,6 +27,7 @@ public:
     explicit IKeyboardHandler(int update_interval_ms,QObject *parent);
     const QVector<int>& getPressedKeys() const;
     ~IKeyboardHandler();
+    void clear();
 
 protected slots:
     virtual void handleKeyEvents() = 0;

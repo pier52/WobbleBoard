@@ -27,6 +27,7 @@
 #include "mouseclickdetector.h"
 #include "networkpinger.h"
 #include "loggingoptionswindow.h"
+#include "mapwindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -92,13 +93,28 @@ private slots:
 
     void on_resetButton_clicked();
 
+    void on_actionMap_triggered();
+
 private:
+    bool event(QEvent *e) override
+    {
+        switch(e->type())
+        {
+            case QEvent::WindowDeactivate :
+                keyhandler->clear();
+                break ;
+            default:
+                break;
+        }
+
+        return QMainWindow::event(e) ;
+    }
+
     void closeEvent(QCloseEvent *event) override;
     void connectRPi(QString ip);
     void disconnectRPi();
     void connectWiFi(QString ip,unsigned port);
     bool comboBoxContains(QComboBox* box, QString item_name);
-
 
     Ui::MainWindow *ui;
     RPiCamComm* rpi;
@@ -112,6 +128,7 @@ private:
     MotorBoardSettingsWindow* motorboard_settings;
     MouseClickDetector* mouseclick_detector;
     LoggingOptionsWindow* logging_options;
+    MapWindow* map_window;
 
     bool is_streaming;
     QString arduino_port;

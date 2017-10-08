@@ -63,3 +63,9 @@ const QVector<int>& IKeyboardHandler::getPressedKeys() const
 {
     return pressed_keys;
 }
+
+void IKeyboardHandler::clear()
+{
+    pressed_keys.clear();
+    key_timer->setSingleShot(true);
+}

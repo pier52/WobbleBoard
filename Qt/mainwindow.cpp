@@ -70,6 +70,7 @@ MainWindow::MainWindow(QWidget *parent) :
     rpi = new RPiCamComm(log);
     motor_comm = new MotorComm(log, "ControlBoard1");
     motor_comm2 = new MotorComm(log, "ControlBoard2");
+    map_window = new MapWindow();
 
 
     keyhandler = new MainWindowKeyHandler(this);
@@ -126,6 +127,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->robotRenderer->scaleAfterParent();
     ui->speedSlider->setValue(settings->value("motor_speed",20).toInt());
+
+    connect(keyhandler,SIGNAL(newSteerAngle(double)),map_window,SLOT(debug_step_angle(double)));
+    connect(keyhandler,SIGNAL(motorDirection(int)),map_window,SLOT(debug_step(int)));
 }
 
 MainWindow::~MainWindow()
@@ -170,6 +174,7 @@ MainWindow::~MainWindow()
     keyhandler->deleteLater();
     plot_window->deleteLater();
     motorboard_settings->deleteLater();
+    delete map_window;
     delete log;
     delete mouseclick_detector;
     delete ui;
@@ -181,6 +186,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
     motorboard_settings->close();
     camera_settings->close();
     logging_options->close();
+    map_window->close();
     QWidget::closeEvent(event);
 }
 
@@ -541,4 +547,9 @@ void MainWindow::on_connectWiFiButton_2_clicked()
 void MainWindow::on_resetButton_clicked()
 {
     motor_comm2->requestReset();
+}
+
+void MainWindow::on_actionMap_triggered()
+{
+   map_window->show();
 }
