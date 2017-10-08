@@ -782,7 +782,7 @@
      <rect>
       <x>10</x>
       <y>200</y>
-      <width>81</width>
+      <width>101</width>
       <height>17</height>
      </rect>
     </property>
@@ -800,7 +800,7 @@
      <x>0</x>
      <y>0</y>
      <width>638</width>
-     <height>21</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -811,6 +811,7 @@
     <addaction name="actionMotor_Board_Settings"/>
     <addaction name="actionPlot"/>
     <addaction name="action_Logging_options"/>
+    <addaction name="actionMap"/>
    </widget>
    <widget class="QMenu" name="menu_Help">
     <property name="title">
@@ -838,12 +839,12 @@
   </action>
   <action name="actionPlot">
    <property name="text">
-    <string>Plot</string>
+    <string>&amp;Plot</string>
    </property>
   </action>
   <action name="actionMotor_Board_Settings">
    <property name="text">
-    <string>Motor Board Settings</string>
+    <string>&amp;Motor Board Settings</string>
    </property>
   </action>
   <action name="action_Manual">
@@ -859,6 +860,11 @@
   <action name="action_Logging_options">
    <property name="text">
     <string>&amp;Logging options</string>
+   </property>
+  </action>
+  <action name="actionMap">
+   <property name="text">
+    <string>Map</string>
    </property>
   </action>
  </widget>

@@ -41,7 +41,9 @@ SOURCES += main.cpp\
     ikeyboardhandler.cpp \
     mainwindowkeyhandler.cpp \
     plotwindowkeyhandler.cpp \
-    motorcommwrapper.cpp
+    motorcommwrapper.cpp \
+    mapwindow.cpp \
+    positionwidget.cpp
 
 HEADERS  += mainwindow.h \
     tcpclient.h \
@@ -71,11 +73,15 @@ HEADERS  += mainwindow.h \
     ikeyboardhandler.h \
     mainwindowkeyhandler.h \
     plotwindowkeyhandler.h \
-    motorcommwrapper.h
+    motorcommwrapper.h \
+    mapwindow.h \
+    positionwidget.h
 
 FORMS    += mainwindow.ui \
     plotwindow.ui \
     motorboardsettingswindow.ui \
     cameramodulesettingswindow.ui \
     loggingoptionswindow.ui \
-    logchooserdialog.ui
+    logchooserdialog.ui \
+    mapwindow.ui \
+    positionwidget.ui
